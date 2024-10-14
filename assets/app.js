@@ -1,3 +1,4 @@
+import { registerVueControllerComponents } from '@symfony/ux-vue';
 import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
@@ -6,5 +7,5 @@ import './bootstrap.js';
  * which should already be in your base.html.twig.
  */
 import './styles/app.css';
-
+registerVueControllerComponents(require.context('./vue/controllers', true, /\.vue$/));
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

@@ -11,7 +11,7 @@
 export default {
   async asyncData({ $axios }) {
     try {
-      const users = await $axios.$get('/User'); // Fetch from /users endpoint
+      const users = await $axios.$get('/user'); // Fetch from /users endpoint
       return { users };
     } catch (error) {
       console.error('Error fetching users:', error);
