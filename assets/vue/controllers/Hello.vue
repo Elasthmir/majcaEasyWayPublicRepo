@@ -1,9 +1,27 @@
+<script>
+export default {
+  name: "Hello",
+  props: {
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  data(){
+    return {
+      list: [1, 2, 3]
+    }
+  }
+}
+</script>
+
+
 <template>
-    <div>nigger</div>
+  <div>
+    bye {{ name }}
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </div>
 </template>
 
-<script setup>
-    defineProps({
-        name: String
-    });
-</script>
