@@ -29,12 +29,7 @@ class UserController extends AbstractController
 
 
 
-        if (!$user) {
-            throw $this->createNotFoundException('The product does not exist');
-                
-            // the above is just a shortcut for:
-            // throw new NotFoundHttpException('The product does not exist');
-        }
+       
         $form = $this->createForm(UserType::class, $task);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
