@@ -3,6 +3,12 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     <form method="post">
         {% if error %}
             <div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "070db691df96264829000c75f5b670c3",
+    "content-hash": "15629781999b74514344e9458909fbef",
     "packages": [
         {
             "name": "api-platform/doctrine-common",
@@ -9122,16 +9122,16 @@
         },
         {
             "name": "symfonycasts/sass-bundle",
-            "version": "v0.8.0",
+            "version": "v0.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/sass-bundle.git",
-                "reference": "bcf4112946fa2b635d3516ca63b4ec5904958c38"
+                "reference": "4637a176b5adfb03f83c409c3f9f566e30426318"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/bcf4112946fa2b635d3516ca63b4ec5904958c38",
-                "reference": "bcf4112946fa2b635d3516ca63b4ec5904958c38",
+                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/4637a176b5adfb03f83c409c3f9f566e30426318",
+                "reference": "4637a176b5adfb03f83c409c3f9f566e30426318",
                 "shasum": ""
             },
             "require": {
@@ -9142,11 +9142,9 @@
                 "symfony/http-client": "^5.4|^6.3|^7.0",
                 "symfony/process": "^5.4|^6.3|^7.0"
             },
-            "conflict": {
-                "phpunit/phpunit": ">=10"
-            },
             "require-dev": {
                 "matthiasnoback/symfony-config-test": "^5.0",
+                "phpunit/phpunit": "^9.6",
                 "symfony/framework-bundle": "^6.3|^7.0",
                 "symfony/phpunit-bridge": "^6.3.9|^7.0"
             },
@@ -9173,9 +9171,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SymfonyCasts/sass-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.8.0"
+                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.8.1"
             },
-            "time": "2024-10-11T12:33:18+00:00"
+            "time": "2024-10-17T10:46:06+00:00"
         },
         {
             "name": "symfonycasts/verify-email-bundle",
