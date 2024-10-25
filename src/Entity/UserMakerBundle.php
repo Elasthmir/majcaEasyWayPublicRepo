@@ -36,6 +36,12 @@ class UserMakerBundle implements UserInterface, PasswordAuthenticatedUserInterfa
     #[ORM\Column]
     private bool $isVerified = false;
 
+    #[ORM\Column(length: 20)]
+    private ?string $nickName = "null";
+
+    #[ORM\Column(length: 20)]
+    private ?string $firstName = "test";
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +125,30 @@ class UserMakerBundle implements UserInterface, PasswordAuthenticatedUserInterfa
     public function setVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getNickName(): ?string
+    {
+        return $this->nickName;
+    }
+
+    public function setNickName(string $nickName): static
+    {
+        $this->nickName = $nickName;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
 
         return $this;
     }

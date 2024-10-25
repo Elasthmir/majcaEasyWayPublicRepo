@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+
 
 {% block title %}Hello UserController! {% endblock %}
 
@@ -7,20 +7,21 @@
 <head>
         {% block stylesheets %}
 
-            <link rel="stylesheet" href="{{ asset('styles/_app.scss') }}">
-
+            <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/loginForm.scss') }}">
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 </head>
 <div id="app">
-        <p>adad: </p>
-        <p>aa</p>
-    
-            {{ form_start(form) }}
-            {# your custom code for rendering the form #} 
-            {# if you leave default then it should render with bad styles etc. #}
-        {{ form_end(form) }}
-        <a href="{{ path('app_logout') }}">Logout</a>
+ <div class="form">
+        <form method="post">
+          <h1 class="h3 mb-3 font-weight-normal">
+                <a href="{{ path('app_main') }}"><img src="{{asset('images/logo (1) — kopia.png')}}" class="logoLogin"/></a>
+            </h1>
+       </form>
+       
+</div>
 </div>
 
 </div>

@@ -19,6 +19,9 @@ class User
     #[ORM\Column(length: 30)]
     private ?string $lastName = null;
 
+    #[ORM\Column(length: 20)]
+    private ?string $nickName = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class User
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getNickName(): ?string
+    {
+        return $this->nickName;
+    }
+
+    public function setNickName(string $nickName): static
+    {
+        $this->nickName = $nickName;
 
         return $this;
     }

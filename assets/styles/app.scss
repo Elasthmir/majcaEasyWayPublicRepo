@@ -3,6 +3,7 @@ $blueBackround: #1f2838;
 $greenBytton:   #00d092;
 $fontStyle:       "Poppins", sans-serif;
 @import 'mainContent';
+@import 'loginForm';
 @mixin flex-center {
     
     display: flex;

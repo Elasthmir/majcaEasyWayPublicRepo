@@ -111,6 +111,51 @@ export default {
       </div>
     </div>
 
+    <div class="aboutPart2">
+        
+      <div class="aboutText">
+        <span class="greenTitle">Indywidualne podejście</span>
+          <div class="title">
+            Ulepsz naukę dzięki personalizacji 
+          </div>
+          <div class="aboutTextDesc_1 descText">
+            Majca oferuje dostosowane quizy i konkurencyjne tabele liderów, tworząc spersonalizowane i wymagające doświadczenie w nauce matematyki dla wszystkich. 
+          </div>
+          <div class="aboutTextDesc_2 descText">
+            <li>Niestandardowe quizy dla każdego poziomu </li>
+            <li>Ujawniono strategie punktacji w rankingach </li>
+            <li>Szybkie wyzwania dla szybkiego postępu </li>
+          </div>
+          <div class="clickforMore">
+            <div class="button">
+              <a href="/login">
+                <input type="button" class="button" value="Rozpocznij naukę"/>
+              </a>
+            </div>
+          </div>
+      </div>
+      <img src="../../images/note.png" alt="cup">
+    </div>
+    <div class="aboutPart2">
+        
+      <div class="aboutText">
+        <span class="greenTitle">Różnorodna tematyka </span>
+          <div class="title">
+            Zapoznaj się z naszymi spostrzeżeniami 
+          </div>
+          <div class="aboutTextDesc_1 descText">
+            Zanurz się w świecie matematycznych spostrzeżeń, wyzwań i wskazówek dzięki naszym wciągającym treściom na blogu, zaprojektowanym tak, aby inspirować i edukować.  
+          </div>
+          <div class="clickforMore">
+            <div class="button">
+              <a href="/login">
+                <input type="button" class="button" value="Czytaj więcej"/>
+              </a>
+            </div>
+          </div>
+      </div>
+    </div>
+
 </template>
 <style>
 
