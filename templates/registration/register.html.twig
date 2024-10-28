@@ -1,4 +1,11 @@
 
+                {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+            
+        {% endblock %}
+        
+        
             {% block stylesheets %}
 
             <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
@@ -16,7 +23,7 @@
 
 
 
-
+  <body>
     <div class="form">
 
         {{ form_errors(registrationForm) }}
@@ -29,13 +36,28 @@
                     <a href="{{ path('app_main') }}"><img src="{{asset('images/logo (1) — kopia.png')}}" class="logoLogin"/></a>
                 </h1>
             {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.firstName) }}
             {{ form_row(registrationForm.nickName) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
+            
+        <div id="app">
+            <div class="menu">
+            <Modal>
+            </Modal>
+        </div>
 
+            {{ form_row(registrationForm.imageName, {
+                attr: {
+                    'value': 'Select an article image'
+                }
+            }) }}
+
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+           
             <button type="submit" class="btn">Register</button>
         {{ form_end(registrationForm) }}
     </div>
+</body>
 {% endblock %}

@@ -1,27 +1,53 @@
 
 
-{% block title %}Hello UserController! {% endblock %}
 
 {% block body %}
 {# templates/home.html.twig #}
 <head>
+ {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+            
+        {% endblock %}
+
         {% block stylesheets %}
 
             <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
             <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
-            <link rel="stylesheet" href="{{ asset('styles/loginForm.scss') }}">
+  
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 </head>
 <div id="app">
- <div class="form">
-        <form method="post">
+  <div class="form1">
+      <form method="post">
           <h1 class="h3 mb-3 font-weight-normal">
-                <a href="{{ path('app_main') }}"><img src="{{asset('images/logo (1) — kopia.png')}}" class="logoLogin"/></a>
+                <a href="{{ path('app_main') }}" class="homePage"><img src="{{asset('images/logo (1) — kopia.png')}}" class="logoLogin"/></a>
             </h1>
-       </form>
+            {% set imageName = app.user.imageName %}
+            {% set imagePath = 'images/avatars/' ~ imageName ~ '.png' %}
+            <div class="title">
+              Witaj, <img src="{{ asset(imagePath) }}" alt="" class="userImage">
+            </div> 
+            <div class="boxes">     
+              <div class="quizzesLink">
+                <img src="{{asset('images/fastQuizz.png')}}" class="imageLink">
+                <div class="titleLink">Szybki strzał</div> 
+              </div>  
+              <div class="quizzesLink">
+                <img src="{{asset('images/40Questions.png')}}" class="imageLink">
+                <div class="titleLink">40 pytań</div> 
+              </div>  
+              </div> 
+              <div class="quizzesLink">
+                <img src="{{asset('images/rankTable.png')}}" class="imageLink">
+                <div class="titleLink">Ranking</div> 
+              </div>       
+             
+      </form>
+
        
-</div>
+  </div>
 </div>
 
 </div>

@@ -4,6 +4,7 @@ $greenBytton:   #00d092;
 $fontStyle:       "Poppins", sans-serif;
 @import 'mainContent';
 @import 'loginForm';
+@import 'userInterface';
 @mixin flex-center {
     
     display: flex;

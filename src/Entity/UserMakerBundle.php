@@ -42,6 +42,9 @@ class UserMakerBundle implements UserInterface, PasswordAuthenticatedUserInterfa
     #[ORM\Column(length: 20)]
     private ?string $firstName = "test";
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $imageName = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +152,18 @@ class UserMakerBundle implements UserInterface, PasswordAuthenticatedUserInterfa
     public function setFirstName(string $firstName): static
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): static
+    {
+        $this->imageName = $imageName;
 
         return $this;
     }
