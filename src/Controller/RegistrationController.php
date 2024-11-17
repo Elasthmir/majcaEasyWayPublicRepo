@@ -29,6 +29,7 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager,  VerifyEmailHelperInterface $verifyEmailHelper): Response
     {
+        $defaultImageName = 'example.jpg'; // This is the value you want to pass
         $user = new UserMakerBundle();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -54,11 +55,11 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_login'   );
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+            'registrationForm' => $form, $user
         ]);
     }
 

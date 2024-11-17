@@ -5,7 +5,9 @@
       <h3>Custom Header</h3>
     </template>
   </Modal_1>
-  <p>Selected Names: {{ checkedNames }}</p>
+  <p>Selected Names: {{ checkedNames }}</p><br>
+  <label for="registration_form_imageName">Image name</label>
+  <input type="text" :value="checkedNames" id="registration_form_imageName" name="registration_form[imageName]" maxlength="20"/>
 </template>
 
 <script>
@@ -19,8 +21,7 @@ export default {
   data() {
     return {
       showModal: false,
-      checkedNames: [],
-      checkedNames1: 'aaa',
+      checkedNames: []
     }
   },
   methods: {
