@@ -27,7 +27,13 @@
             {% set imageName = app.user.imageName %}
             {% set imagePath = 'images/avatars/' ~ imageName ~ '.png' %}
             <div class="title">
-              Witaj, <img src="{{ asset(imagePath) }}" alt="" class="userImage">
+              Witaj, 
+                {% for product in products %}
+                    <tr>
+                      <input type="radio" name="topic"><td>{{ product.topicName }}</td>
+                    </tr>
+                {% endfor %}
+              <img src="{{ asset(imagePath) }}" alt="" class="userImage">
             </div> 
             <div class="boxes">     
               <div class="quizzesLink">

@@ -50,9 +50,12 @@ final class Version20241028071227 extends AbstractMigration
         $this->addSql('DROP TABLE user_maker_bundle');
         $this->addSql('CREATE TEMPORARY TABLE __temp__messenger_messages AS SELECT id, body, headers, queue_name, created_at, available_at, delivered_at FROM messenger_messages');
         $this->addSql('DROP TABLE messenger_messages');
-        $this->addSql('CREATE TABLE messenger_messages (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, body CLOB NOT NULL, headers CLOB NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
-        , available_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
-        , delivered_at DATETIME DEFAULT NULL --(DC2Type:datetime_immutable)
+        $this->addSql('CREATE TABLE messenger_messages (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, body CLOB NOT NULL, headers CLOB NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL --
+(DC2Type:datetime_immutable)
+        , available_at DATETIME NOT NULL --
+(DC2Type:datetime_immutable)
+        , delivered_at DATETIME DEFAULT NULL --
+(DC2Type:datetime_immutable)
         )');
         $this->addSql('INSERT INTO messenger_messages (id, body, headers, queue_name, created_at, available_at, delivered_at) SELECT id, body, headers, queue_name, created_at, available_at, delivered_at FROM __temp__messenger_messages');
         $this->addSql('DROP TABLE __temp__messenger_messages');

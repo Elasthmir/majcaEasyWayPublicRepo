@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\User;
+use App\Entity\MathTopics;
 use App\Form\Type\TaskType;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,27 +22,12 @@ class UserController extends AbstractController
     public function index(UserRepository $userRepository, Request $request, EntityManagerInterface $em): Response
     {
 
-        $user = $userRepository
-                    ->find(1);
-        $task = new User();
-        $task->setName('Rekin');
-        $task->setLastName('Nikgerowski');
-
-
-
-       
-        $form = $this->createForm(UserType::class, $task);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $em->persist($task);
-            $em->flush();
-            # what other actions you need. e.g redirect to success page
-        }
+        $repository = $em->getRepository(MathTopics::class);
+        $products = $repository->findAll();
         return $this->render('user/index.html.twig',[
-            'user' => $user, // Pass the product object to the template
-            'form' => $form->createView(),
+           'products' => $products
         ]);
     }
+
     
 }
