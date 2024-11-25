@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizzController!{% endblock %}
+{% block title %}Quiz - {{ topic }}{% endblock %}
+
 
 {% block body %}
 <style>
@@ -9,24 +10,39 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+{{ encore_entry_link_tags('app') }}
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          // • rendering keys, e.g.:
-          throwOnError : false
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            throwOnError: false
         });
     });
 </script>
-<p>Selected Image: {{ selectedImage }}</p>
-<p>Selected Topic: {{ topic }}</p>
-<p>\(\frac 3 5\) - \(\frac{2x + 12}{3}\) \(\geq\) \(\frac x 6\)</p>
+
+
+<div id="mainContent">
+
+{% set recordsArray = [] %}
+{% for record in records %}
+    {% set recordsArray = recordsArray|merge([{
+        'question': record.getQuestion(),
+       
+    }]) %}
+{% endfor %}
+
+    <Quizz
+        :records='{{ recordsArray|json_encode|raw }}'
+        :topic="{{ topic|json_encode }}"
+        :selected-image="{{ selectedImage|json_encode }}"
+    ></Quizz>
+</div>
+<!-- Przykładowe wyrażenie matematyczne -->
+<!--<p>\(\frac{3}{5}\) - \(\frac{2x + 12}{3}\) \(\geq\) \(\frac{x}{6}\)</p> -->
 {% endblock %}

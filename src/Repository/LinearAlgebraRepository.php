@@ -1,43 +1,57 @@
 <?php
 
-namespace App\Repository;
+    namespace App\Repository;
 
-use App\Entity\LinearAlgebra;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+    use App\Entity\LinearAlgebra;
+    use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+    use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<LinearAlgebra>
- */
-class LinearAlgebraRepository extends ServiceEntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @extends ServiceEntityRepository<LinearAlgebra>
+     */
+    class LinearAlgebraRepository extends ServiceEntityRepository
     {
-        parent::__construct($registry, LinearAlgebra::class);
+        public function __construct(ManagerRegistry $registry)
+        {
+            parent::__construct($registry, LinearAlgebra::class);
+        }
+
+        public function findRandom(int $limit = 1): array
+        {
+            $count = $this->count([]);
+            if ($count === 0) {
+                return [];
+            }
+        
+            $idsResult = $this->createQueryBuilder('la')
+                ->select('la.id')
+                ->getQuery()
+                ->getArrayResult();
+        
+            $ids = array_column($idsResult, 'id');
+        
+            // Losowanie unikalnych ID
+            if ($limit >= $count) {
+                $randomIds = $ids;
+            } else {
+                $randomIds = (array) array_rand(array_flip($ids), $limit);
+            }
+        
+            // Pobieranie rekordów o wylosowanych ID
+            return $this->createQueryBuilder('la')
+                ->where('la.id IN (:ids)')
+                ->setParameter('ids', $randomIds)
+                ->getQuery()
+                ->getResult();
+        }
+
+        //    public function findOneBySomeField($value): ?LinearAlgebra
+        //    {
+        //        return $this->createQueryBuilder('l')
+        //            ->andWhere('l.exampleField = :val')
+        //            ->setParameter('val', $value)
+        //            ->getQuery()
+        //            ->getOneOrNullResult()
+        //        ;
+        //    }
     }
-
-    //    /**
-    //     * @return LinearAlgebra[] Returns an array of LinearAlgebra objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('l.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?LinearAlgebra
-    //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
-}

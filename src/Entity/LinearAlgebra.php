@@ -16,6 +16,9 @@ class LinearAlgebra
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $question = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $answear = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class LinearAlgebra
     public function setQuestion(?string $question): static
     {
         $this->question = $question;
+
+        return $this;
+    }
+
+    public function getAnswear(): ?string
+    {
+        return $this->answear;
+    }
+
+    public function setAnswear(?string $answear): static
+    {
+        $this->answear = $answear;
 
         return $this;
     }

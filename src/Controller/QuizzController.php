@@ -6,25 +6,53 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\TopicHandlerInterface;
 
 class QuizzController extends AbstractController
 {
-    #[Route('/quizz', name: 'app_quizz')]
-    public function index(Request $request, LinearAlgebraRepository $algebraRepository)
+    private iterable $handlers;
+
+    public function __construct(iterable $handlers)
     {
-        // Retrieve the selected image and topic from the query parameters
-        $selectedImage = $request->query->get('selectedImage');
+        $this->handlers = $handlers;
+    }
+
+    #[Route('/quizz', name: 'app_quizz')]
+    public function index(Request $request)
+    {
         $topic = $request->query->get('topic');
-        if ($topic == "Algebra (równania i nierówności liniowe)") {
-            //dd("nigger");
+        $selectedImage = $request->query->get('selectedImage');
+
+        if (!$topic || !$selectedImage) {
+            // Jeśli brakuje danych, przekieruj z powrotem na stronę główną
+            return $this->redirectToRoute('app_home');
         }
-        //dd($selectedImage);
-        // Now you have both the selected image and topic values
-        // You can use them to render a template, perform logic, etc.
-        
+
+        // Ustalanie limitu na podstawie wybranego obrazka
+        if ($selectedImage === 'fastQuizz') {
+            $limit = 1;
+        } elseif ($selectedImage === '40Questions') {
+            $limit = 40;
+        } else {
+            // Domyślny limit lub obsługa błędu
+            $limit = 1;
+        }
+
+        $records = [];
+
+        foreach ($this->handlers as $handler) {
+            if ($handler->supports($topic)) {
+                $records = $handler->handle($limit);
+                break;
+            }
+        }
+
+            
         return $this->render('quizz/index.html.twig', [
-            'selectedImage' => $selectedImage,
+            'records' => $records,
             'topic' => $topic,
+            'selectedImage' => $selectedImage
         ]);
     }
 }
+

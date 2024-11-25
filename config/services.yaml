@@ -16,12 +16,22 @@ services:
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Tests,Kernel.php}'
 
+    # Register the topic handlers and tag them
+    App\Service\LinearAlgebraHandler:
+        tags: ['app.topic_handler']
+
+    App\Service\GeometryHandler:
+        tags: ['app.topic_handler']
+
+    # Configure the QuizzController to inject the tagged services
+    App\Controller\QuizzController:
+        arguments:
+            $handlers: !tagged_iterator 'app.topic_handler'
+                
+                
     Psr\Log\LoggerInterface $mdLogger: '@monolog.logger.markdown'
 
     # add more service definitions when explicit configuration is needed
