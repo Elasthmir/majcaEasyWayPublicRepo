@@ -23,10 +23,10 @@ class QuizzController extends AbstractController
         $topic = $request->query->get('topic');
         $selectedImage = $request->query->get('selectedImage');
 
-        if (!$topic || !$selectedImage) {
+        //if (!$topic || !$selectedImage) {
             // Jeśli brakuje danych, przekieruj z powrotem na stronę główną
-            return $this->redirectToRoute('app_home');
-        }
+          //  return $this->redirectToRoute('app_home');
+       // }
 
         // Ustalanie limitu na podstawie wybranego obrazka
         if ($selectedImage === 'fastQuizz') {
@@ -43,11 +43,11 @@ class QuizzController extends AbstractController
         foreach ($this->handlers as $handler) {
             if ($handler->supports($topic)) {
                 $records = $handler->handle($limit);
+                //dd($records);
                 break;
             }
         }
-
-            
+       
         return $this->render('quizz/index.html.twig', [
             'records' => $records,
             'topic' => $topic,

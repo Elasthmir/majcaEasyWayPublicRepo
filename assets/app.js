@@ -5,7 +5,7 @@ import Modal from './vue/controllers/Modal.vue';
 import Quizz from './vue/controllers/Quizz.vue';
 const app = createApp({
   components: {
-    Hello,   // Register your Hello component
+   // Hello,   // Register your Hello component
     Content,
     Modal,
     Quizz

@@ -6,6 +6,10 @@ export default {
       type: Array,
       required: true,
     },
+    answer: {
+      type: Array,
+      required: true,
+    },
     topic: {
       type: String,
       required: true,
@@ -17,7 +21,7 @@ export default {
   },
   data() {
     return {
-      countDownResponse: [],
+      countDownResponse: this.records,
       answers: ["good", "bad_1", "bad_2", "bad_3"],
       countDownResponseTimer: 1,
       awesome: false,
@@ -30,8 +34,23 @@ export default {
     },
   },
   methods: {
+    toggleQuestion() {
+      console.log("Component mounted123"); // Ensure Vue instance is mounted
+      if (this.countDownResponseTimer > 0) {
+        this.countDownResponseTimer -= 1;
+      } else {
+        this.countDownResponseTimer = this.countDownResponse.length - 1;
+      }
+      console.log("Timer:", this.countDownResponseTimer);
+      console.log("Current Question:", this.countDownResponse[this.countDownResponseTimer]?.question);
+      this.randomList(this.answers)
+      //this.randomList(this.countDownResponse)
+      this.right = 0
+      console.log(this.answer);
+    },
+
     recordContent(record) {
-      console.log(record);
+
       return record.question;
     },
     countDownTimer() {
@@ -44,14 +63,17 @@ export default {
       this.right = answer === "good" ? 1 : 2;
     },
   },
-  mounted() {
-    console.log("Records:", this.records.length);
-  },
   created() {
-    this.countDownResponse = this.records.slice(); // Correctly initialize the data property
+    console.log("Component created"); // Ensure Vue instance is created
+    this.countDownResponse = this.records.slice(); // Initialize the array
     this.countDownTimer();
-    this.randomList(this.countDownResponse);
-    this.randomList(this.answers);
+    //this.randomList(this.countDownResponse);
+    //this.randomList(this.answers);
+
+  },
+  mounted() {
+
+    console.log("Records:", this.records); // Check the passed props
   },
 };
 </script>
@@ -69,15 +91,16 @@ export default {
     <p v-else>No questions available.</p>
   </div>
 
-  <button @click="countDownResponseTimer = countDownResponseTimer - 1; right = 0; randomList(answers)">
-    toggle
-  </button>
+  <button @click="toggleQuestion()">Toggle</button>
   <br />
   <button @click="checkAnswer(answers[0])">{{ answers[0] }}</button><br />
   <button @click="checkAnswer(answers[1])">{{ answers[1] }}</button><br />
   <button @click="checkAnswer(answers[2])">{{ answers[2] }}</button><br />
   <button @click="checkAnswer(answers[3])">{{ answers[3] }}</button><br />
-  <h1>{{ countDownResponse[0].question }}</h1>
+  <h1 v-if="countDownResponseTimer > 0 && countDownResponseTimer < countDownResponse.length">
+    {{ countDownResponse[countDownResponseTimer].question }}
+  </h1>
+  <h1 v-else>No questions available.</h1>
   <span v-if="right == 0"></span>
   <span v-if="right == 1">good</span>
   <span v-if="right == 2">bad</span>

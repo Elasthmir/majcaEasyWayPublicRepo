@@ -25,6 +25,7 @@ class LinearAlgebraHandler implements TopicHandlerInterface
     if (empty($randomRecords)) {
         return [];
     }
+    
 
     return $randomRecords;
     }

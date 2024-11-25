@@ -27,18 +27,23 @@
 </script>
 
 
-<div id="mainContent">
+<div id="app">
 
 {% set recordsArray = [] %}
+{% set recordsArrayAnswer = [] %}
 {% for record in records %}
     {% set recordsArray = recordsArray|merge([{
         'question': record.getQuestion(),
-       
+    
+    }]) %}
+     {% set recordsArrayAnswer = recordsArrayAnswer|merge([{
+        'answer': record.getAnswear(),
+    
     }]) %}
 {% endfor %}
-
     <Quizz
         :records='{{ recordsArray|json_encode|raw }}'
+        :answer='{{ recordsArrayAnswer|json_encode|raw}}'
         :topic="{{ topic|json_encode }}"
         :selected-image="{{ selectedImage|json_encode }}"
     ></Quizz>
