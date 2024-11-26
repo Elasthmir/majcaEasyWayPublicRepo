@@ -36,6 +36,7 @@ export default {
     return {
       countDownResponse: this.records,
       countdown: 30,
+      intervalId: null, // Add this line
       goodAnswersCounter: 0,
       countDownResponseTimer: 4,
       shuffledAnswers: [], // Holds the shuffled answers for the current question
@@ -49,6 +50,31 @@ export default {
     },
   },
   methods: {
+    counting() {
+    // Clear any existing interval
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+
+    // Initialize the countdown
+    this.countdown = 30;
+
+    // Start a new interval and store its ID
+    this.intervalId = setInterval(() => {
+      console.log('current countdown', this.countdown);
+      this.countdown -= 1;
+
+      if (this.countdown <= 0) {
+        // Stop the interval when countdown reaches zero
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+
+        // Optionally call another method when countdown ends
+        // this.toggleQuestion();
+      }
+    }, 1000);
+  },
     toggleQuestion() {
       if (this.countDownResponseTimer > 0) {
         this.countDownResponseTimer -= 1;
@@ -101,13 +127,7 @@ export default {
     this.shuffleAnswersForCurrentQuestion(); // Initialize with shuffled answers for the first question
     this.countDownTimer();
   },
-  mounted() {
-    const stopCountdown = setInterval(() => {
-      console.log('current countdown', this.countdown)
-      this.countdown -= 1
-      if (!this.countdown) clearInterval(stopCountdown)
-    }, 1000)
-  },
+ 
   
 };
 </script>
@@ -132,20 +152,26 @@ export default {
     </h1>
     <!-- Render shuffled buttons -->
     <div>
-      <button
-        v-for="(answer, index) in shuffledAnswers"
-        :key="index"
-        @click="checkAnswer(answer),toggleQuestion()"
-      >
-        {{ answer }}
-      </button>
+      
+      <div v-if="countDownResponseTimer >= 0">
+        <button
+          
+          v-for="(answer, index) in shuffledAnswers"
+          :key="index"
+          @click="checkAnswer(answer),toggleQuestion(),counting()"
+        >
+          {{ answer }}
+        </button>
+      </div>
+      <div  v-else></div>
     </div>
 
-    <button @click="toggleQuestion()">Toggle</button>
-
+    <button @click="toggleQuestion(),counting()">Toggle</button>
+    <span v-if="countDownResponseTimer == -1"></span>
+    <span v-else>{{ this.countdown }}</span>
     <span v-if="right == 0"></span>
     <span v-if="right == 1">Good</span>
     <span v-if="right == 2">Bad</span>
-    <span>{{ goodAnswersCounter }}/{{ countDownResponse.length }} dobrych odpowiedzi</span>
+    <span >{{ goodAnswersCounter }}/{{ countDownResponse.length }} dobrych odpowiedzi</span>
   </div>
 </template>
