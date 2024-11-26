@@ -1,5 +1,6 @@
 <script>
 export default {
+  inheritAttrs: false,
   name: "Quizz",
   props: {
     records: {
@@ -7,6 +8,10 @@ export default {
       required: true,
     },
     answer: {
+      type: Array,
+      required: true,
+    },
+    answerbad: {
       type: Array,
       required: true,
     },
@@ -22,8 +27,10 @@ export default {
   data() {
     return {
       countDownResponse: this.records,
-      answers: ["good", "bad_1", "bad_2", "bad_3"],
       countDownResponseTimer: 1,
+      answerBad1: this.answerBad,
+      answers: ["-71", "50"],
+      
       awesome: false,
       right: 0,
     };
@@ -35,18 +42,19 @@ export default {
   },
   methods: {
     toggleQuestion() {
-      console.log("Component mounted123"); // Ensure Vue instance is mounted
+
       if (this.countDownResponseTimer > 0) {
         this.countDownResponseTimer -= 1;
       } else {
         this.countDownResponseTimer = this.countDownResponse.length - 1;
       }
-      console.log("Timer:", this.countDownResponseTimer);
-      console.log("Current Question:", this.countDownResponse[this.countDownResponseTimer]?.question);
+
       this.randomList(this.answers)
       //this.randomList(this.countDownResponse)
       this.right = 0
       console.log(this.answer);
+      console.log("++++++++++");
+      console.log(this.answerbad[this.countDownResponseTimer].answerBad);
     },
 
     recordContent(record) {
@@ -60,7 +68,9 @@ export default {
       rand.sort(() => 0.5 - Math.random());
     },
     checkAnswer(answer) {
-      this.right = answer === "good" ? 1 : 2;
+      console.log("pogo" + answer)
+      console.log(this.answers[0])
+      this.right = answer === this.answerbad[this.countDownResponseTimer].answerBad ? 1 : 2;
     },
   },
   created() {
@@ -73,7 +83,7 @@ export default {
   },
   mounted() {
 
-    console.log("Records:", this.records); // Check the passed props
+    //console.log("Records:", this.records); // Check the passed props
   },
 };
 </script>
@@ -93,14 +103,14 @@ export default {
 
   <button @click="toggleQuestion()">Toggle</button>
   <br />
-  <button @click="checkAnswer(answers[0])">{{ answers[0] }}</button><br />
-  <button @click="checkAnswer(answers[1])">{{ answers[1] }}</button><br />
+  <button @click="checkAnswer(answers[1])">{{ this.answerbad[this.countDownResponseTimer].answerBad}}</button><br />
+  <button @click="checkAnswer(answers[0])">{{ answers[1] }}</button><br />
   <button @click="checkAnswer(answers[2])">{{ answers[2] }}</button><br />
   <button @click="checkAnswer(answers[3])">{{ answers[3] }}</button><br />
-  <h1 v-if="countDownResponseTimer > 0 && countDownResponseTimer < countDownResponse.length">
+  <h1 v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
     {{ countDownResponse[countDownResponseTimer].question }}
   </h1>
-  <h1 v-else>No questions available.</h1>
+  
   <span v-if="right == 0"></span>
   <span v-if="right == 1">good</span>
   <span v-if="right == 2">bad</span>

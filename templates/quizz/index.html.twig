@@ -31,6 +31,7 @@
 
 {% set recordsArray = [] %}
 {% set recordsArrayAnswer = [] %}
+{% set answerbad = [] %}
 {% for record in records %}
     {% set recordsArray = recordsArray|merge([{
         'question': record.getQuestion(),
@@ -40,10 +41,16 @@
         'answer': record.getAnswear(),
     
     }]) %}
+    {% set answerbad = answerbad|merge([{
+        'answerBad': record.getAnswerBad1(),
+        
+    }]) %}
 {% endfor %}
+
     <Quizz
         :records='{{ recordsArray|json_encode|raw }}'
         :answer='{{ recordsArrayAnswer|json_encode|raw}}'
+        :answerbad='{{ answerbad|json_encode}}'
         :topic="{{ topic|json_encode }}"
         :selected-image="{{ selectedImage|json_encode }}"
     ></Quizz>
