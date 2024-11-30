@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Score;
+use App\Entity\MathTopics;
 use App\Repository\LinearAlgebraRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,8 +26,9 @@ class QuizzController extends AbstractController
     public function index(Request $request)
     {
         $topic = $request->query->get('topic');
+        $topicId = $request->query->get('topicId');
         $selectedImage = $request->query->get('selectedImage');
-
+        //dd($topicId);
         //if (!$topic || !$selectedImage) {
             // Jeśli brakuje danych, przekieruj z powrotem na stronę główną
           //  return $this->redirectToRoute('app_home');
@@ -57,6 +59,7 @@ class QuizzController extends AbstractController
         return $this->render('quizz/index.html.twig', [
             'records' => $records,
             'topic' => $topic,
+            'topicId' => $topicId,
             'selectedImage' => $selectedImage,
             'csrf_token' => $csrfToken
         ]);
@@ -71,6 +74,7 @@ class QuizzController extends AbstractController
         $scoreValue = $request->request->get('score');
         $csrfToken = $request->request->get('_csrf_token');
         $topic = $request->request->get('topic');
+        $topicId = $request->request->get('topicId');
         //dd($topic, $csrfToken, $scoreValue);  
         // Validate CSRF token
         if (!$this->isCsrfTokenValid('save_score', $csrfToken)) {
@@ -82,20 +86,25 @@ class QuizzController extends AbstractController
             return new Response('Invalid data', Response::HTTP_BAD_REQUEST);
         }
         
+        $mathTopic = $entityManager->getRepository(MathTopics::class)->findOneBy(['topicName' => $topic]);
+        //dd($mathTopic);
         $scoreEntity = new Score();
         $scoreEntity->setScore((int)$scoreValue);
         $scoreEntity->setTopic($topic);
         $scoreEntity->setCreatedAt(new \DateTime());
-         
+        $scoreEntity->setTopicId($mathTopic);
+        $topicId = $mathTopic->getId();
         // Set the user (can be null if unauthenticated users are allowed)
         $user = $this->getUser();
         
         $scoreEntity->setUserId($user);
-    
+       
+        
         $entityManager->persist($scoreEntity);
         $entityManager->flush();
+        //dd($topicId);
         // Redirect to a confirmation page or render a response
-        return $this->redirectToRoute('app_score_rank');
+        return $this->redirectToRoute('app_score_rank',['id' => $topicId]);
     }
 
     /**

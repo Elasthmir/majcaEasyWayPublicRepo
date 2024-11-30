@@ -23,7 +23,7 @@ services:
     App\Service\LinearAlgebraHandler:
         tags: ['app.topic_handler']
 
-    App\Service\GeometryHandler:
+    App\Service\LinearFunctionHandler:
         tags: ['app.topic_handler']
 
     # Configure the QuizzController to inject the tagged services

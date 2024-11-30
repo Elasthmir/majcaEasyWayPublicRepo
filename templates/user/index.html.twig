@@ -48,12 +48,7 @@
                         <div class="titleLink">40 pytań</div>
                     </a>
                 </div>
-                <div class="quizzesLink">
-                    <a href="{{ path('app_score_rank') }}" onclick="submitFormWithImage('rankTable')">
-                        <img src="{{ asset('images/rankTable.png') }}" class="imageLink">
-                        <div class="titleLink">Ranking</div>
-                    </a>
-                </div>
+
             </div>
 
             <!-- Hidden input to store the selected image -->
@@ -63,7 +58,7 @@
 </div>
 
 <script>
-    function submitFormWithImage(imageName) {
+    function submitFormWithImage(imageName, topicId) {
         // Set the value of the hidden input
         document.getElementById('selectedImage').value = imageName;
 

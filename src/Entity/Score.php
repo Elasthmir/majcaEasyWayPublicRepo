@@ -26,6 +26,9 @@ class Score
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'scores')]
+    private ?MathTopics $topic_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Score
     public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getTopicId(): ?MathTopics
+    {
+        return $this->topic_id;
+    }
+
+    public function setTopicId(?MathTopics $topic_id): static
+    {
+        $this->topic_id = $topic_id;
 
         return $this;
     }

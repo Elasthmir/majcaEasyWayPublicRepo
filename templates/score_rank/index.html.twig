@@ -8,13 +8,14 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Admin/Desktop/nuxtSymfony4/nuxtSymfony/src/Controller/ScoreRankController.php</code></li>
-        <li>Your template at <code>C:/Users/Admin/Desktop/nuxtSymfony4/nuxtSymfony/templates/score_rank/index.html.twig</code></li>
-    </ul>
-</div>
+ <table>
+ {% set counter = 1 %}
+            {% for category in product1 %}
+                {{ counter }}
+                {{ category.nickName }}
+                {{ category.topic }}
+                {{ category.score }}<br/>
+                 {% set counter = counter + 1 %}
+            {% endfor %}
+        </table>
 {% endblock %}

@@ -48,11 +48,12 @@ export default {
       countdown: 30,
       intervalId: null,
       goodAnswersCounter: 0,
-      countDownResponseTimer: 4,
+      countDownResponseTimer: 0,
       shuffledAnswers: [],
       awesome: false,
       right: 0,
       totalScore: 0,
+
 
       
     };
@@ -226,7 +227,7 @@ export default {
         <input type="hidden" name="score" :value="totalScore" />
         <!-- Hidden input to hold the topic -->
         <input type="hidden" name="topic" :value="topic" />
-
+        <input type="hidden" name="topicId" :value="topicId" />
         <!-- Submit button -->
         <button type="submit">Submit Score</button>
       </form>

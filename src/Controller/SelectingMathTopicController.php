@@ -13,7 +13,7 @@ class SelectingMathTopicController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $product = new MathTopics();
-        $product->setTopicName('Algebra (równania i nierówności liniowe)');
+        $product->setTopicName('Funkcja Liniowa');
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);
