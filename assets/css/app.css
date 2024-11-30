@@ -1,0 +1,446 @@
+#mainContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 150px;
+}
+
+.mainContent {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.desc {
+  width: 50%;
+}
+
+.textContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.descText {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  width: 50%;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 500;
+  width: 50%;
+}
+
+.button {
+  background-color: #00d092;
+  border: none;
+  font-weight: 900;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.about {
+  background-image: url(../images/vectorShape.png), url(../images/circle.png);
+  background-position: right bottom, left top;
+  background-repeat: no-repeat, no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.aboutContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.greenTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #00d092;
+  font-size: 18px;
+  letter-spacing: 8px;
+}
+
+.aboutPanels {
+  width: 60%;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 1fr 1fr;
+}
+
+.cardAbout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  height: 400px;
+  box-shadow: 0px 0px 51px -3px rgb(66, 68, 90);
+  background-color: #1f2838;
+}
+.cardAbout .titleCard {
+  font-size: 32px;
+  margin: 10px;
+}
+.cardAbout .panelsContent {
+  margin: 20px;
+}
+
+.aboutPart2 {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.image {
+  width: 10px;
+}
+
+.form .background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+.form .background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+.form .shape:first-child {
+  background: #00d092;
+  left: -180px;
+  top: -80px;
+}
+.form .shape:last-child {
+  background: #6741e2;
+  right: -180px;
+  bottom: -80px;
+}
+.form form {
+  height: 620px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+.form form * {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.form form h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+.form label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.form input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.form ::-moz-placeholder {
+  color: #e5e5e5;
+}
+.form ::placeholder {
+  color: #e5e5e5;
+}
+.form button {
+  width: 100%;
+  background-color: #00d092;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form .social {
+  margin-top: 30px;
+  display: flex;
+}
+.form .social div {
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255, 255, 255, 0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.form .social div:hover {
+  background-color: rgba(255, 255, 255, 0.47);
+}
+.form .social .fb {
+  margin-left: 25px;
+}
+.form .social i {
+  margin-right: 4px;
+}
+.form .logoLogin {
+  width: 70%;
+}
+.form h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form .links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form1 .homePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form1 .logoLogin {
+  width: 50%;
+}
+.form1 .title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.form1 .background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+.form1 .background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+.form1 .shape:first-child {
+  background: #00d092;
+  left: -180px;
+  top: -80px;
+}
+.form1 .shape:last-child {
+  background: #6741e2;
+  right: -180px;
+  bottom: -80px;
+}
+.form1 form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 820px;
+  width: 900px;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+.form1 .links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form1 .userImage {
+  border-radius: 50%;
+  padding: 20px;
+  width: 150px;
+  height: 150px;
+}
+
+.linkList {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.imageLink {
+  width: 50%;
+}
+
+.quizzesLink {
+  color: white;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #00d092;
+  width: 400px;
+  height: 132px;
+}
+
+.titleLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+body {
+  box-sizing: border-box;
+  color: white;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: #1f2838;
+  font-family: "Poppins", sans-serif;
+  background-image: url("../images/backgroundImage_1kopia.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: 50vw 95vh;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px solid white;
+}
+
+.menuList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: inherit;
+  gap: 70px;
+}
+.menuList img {
+  width: 90%;
+}
+
+.menuLinks {
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 70%;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  width: 350px;
+  height: 170px;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+  color: aliceblue;
+}
+
+.front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  backface-visibility: hidden;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  backface-visibility: hidden;
+  background-color: white;
+  color: black;
+  transform: rotateY(180deg);
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=app.css.map */

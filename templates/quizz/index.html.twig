@@ -60,15 +60,22 @@
     }]) %}
 {% endfor %}
 
-    <Quizz
-        :records='{{ recordsArray|json_encode|raw }}'
-        :answer='{{ recordsArrayAnswer|json_encode|raw}}'
-        :answerbad='{{ answerbad|json_encode}}'
-        :answerbadfirst='{{ answerbadfirst|json_encode}}'
-        :answerbadsecond='{{ answerbadsecond|json_encode}}'
-        :topic="{{ topic|json_encode }}"
-        :selected-image="{{ selectedImage|json_encode }}"
-    ></Quizz>
+{% set csrf_token = csrf_token('save_score') %}
+    {{ dump(topic) }}
+    {{ dump(csrf_token) }}
+       <div id="quiz-app">
+            <Quizz
+                :records='{{ recordsArray|json_encode }}'
+                :answer='{{ recordsArrayAnswer|json_encode}}'
+                :answerbad="{{ answerbad|json_encode }}"
+                :answerbadfirst="{{ answerbadfirst|json_encode }}"
+                :answerbadsecond="{{ answerbadsecond|json_encode }}"
+                :topic="{{ topic|json_encode }}"
+                :selected-image="{{ selectedImage|json_encode }}"
+                :csrf-token="{{ csrf_token('save_score')|json_encode}}"
+                :save-score-url="{{ path('save_score')|json_encode }}"
+            ></Quizz>
+    </div>
 </div>
 <!-- Przykładowe wyrażenie matematyczne -->
 <!--<p>\(\frac{3}{5}\) - \(\frac{2x + 12}{3}\) \(\geq\) \(\frac{x}{6}\)</p> -->
