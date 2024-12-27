@@ -14,7 +14,7 @@ class SelectingMathTopicController extends AbstractController
     {
         $product = new MathTopics();
         $product->setTopicName('Funkcja Liniowa');
-
+        
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);
 

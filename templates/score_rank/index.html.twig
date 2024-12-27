@@ -1,21 +1,39 @@
-{% extends 'base.html.twig' %}
+
 
 {% block title %}Hello ScoreRankController!{% endblock %}
+{% block stylesheets %}
 
+            <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/_scoreRank.scss') }}">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
- <table>
- {% set counter = 1 %}
-            {% for category in product1 %}
-                {{ counter }}
-                {{ category.nickName }}
-                {{ category.topic }}
-                {{ category.score }}<br/>
-                 {% set counter = counter + 1 %}
-            {% endfor %}
-        </table>
+    <div class="content">
+        <div class="rankTable">
+            {% set counter = 1 %}
+                {% for category in product1 %}
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
+                <div class="rankPerson">
+                
+                   <span class="id"> {{ counter }}</span>
+                   <span class="name"> {{ category.nickName }}</span>
+                   <span class="topic"> {{ category.topic }}</span>
+                   <span class="score"> {{ category.score }}</span><br/>
+                   {% set counter = counter + 1 %}
+                </div>
+                <div class="shape"></div>
+                {% endfor %}
+        </div>
+         
+    </div>
+    <a href="http://localhost:8000/user#">powrót</a>
+        {% for topic in mathTopics %}
+            <div>
+                <a href="http://localhost:8000/score/rank/{{topic.id}}">{{topic.topicName}}</a>                
+            </div>
+        {% endfor %}
 {% endblock %}

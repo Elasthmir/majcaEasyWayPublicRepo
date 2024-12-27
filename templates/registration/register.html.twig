@@ -36,8 +36,12 @@
                     <a href="{{ path('app_main') }}"><img src="{{asset('images/logo (1) — kopia.png')}}" class="logoLogin"/></a>
                 </h1>
             {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.firstName) }}
-            {{ form_row(registrationForm.nickName) }}
+            {{ form_row(registrationForm.firstName, {
+                label: 'Imię'
+            }) }}
+            {{ form_row(registrationForm.nickName, {
+                label: 'Nick'
+            }) }}
             
         <div id="app">
             <div class="menu">
@@ -52,9 +56,11 @@
             }) }}
 
                 {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
+                    label: 'Hasło'
                 }) }}
-                {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_row(registrationForm.agreeTerms, {
+                    label: 'Zgadzam się na warunki'
+                }) }}
            
             <button type="submit" class="btn">Register</button>
         {{ form_end(registrationForm) }}

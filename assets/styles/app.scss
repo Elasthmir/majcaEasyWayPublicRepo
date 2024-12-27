@@ -5,6 +5,7 @@ $fontStyle:       "Poppins", sans-serif;
 @import 'mainContent';
 @import 'loginForm';
 @import 'userInterface';
+@import 'scoreRank';
 @mixin flex-center {
     
     display: flex;

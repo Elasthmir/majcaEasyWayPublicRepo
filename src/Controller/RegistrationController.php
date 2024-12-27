@@ -30,32 +30,22 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager,  VerifyEmailHelperInterface $verifyEmailHelper): Response
     {
-        $defaultImageName = 'example.jpg'; // This is the value you want to pass
         $user = new UserMakerBundle();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
-            $nickName = $form->get('nickName')->getData();
-            // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
-
             $entityManager->persist($user);
             $entityManager->flush();
-          
             $signatureComponents = $verifyEmailHelper->generateSignature(
                 'app_verify_email',
                 $user->getId(),
                 $user->getEmail(),
                 ['id' => $user->getId()]
             );
-            // TODO: in a real app, send this as an email!
             $this->addFlash('success', 'Confirm your email at: '.$signatureComponents->getSignedUrl());
-
-            // do anything else you need here, like send an email
-
             return $this->redirectToRoute('app_login');
         }
 
@@ -64,6 +54,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+    
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, VerifyEmailHelperInterface $verifyEmailHelper, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {

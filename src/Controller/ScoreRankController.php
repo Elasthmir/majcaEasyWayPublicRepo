@@ -18,7 +18,9 @@ class ScoreRankController extends AbstractController
     #[Route('/score/rank/{id}', name: 'app_score_rank')]
     public function index(EntityManagerInterface $entityManager, int $id): Response
     {
-        
+        $mathTable = $entityManager->getRepository(MathTopics::class);
+        $mathTopics = $mathTable->findAll();
+
         $product = $entityManager->getRepository(MathTopics::class)->find($id);
         $topicName = $product->getTopicName();
         //dd($topicName);
@@ -41,8 +43,13 @@ class ScoreRankController extends AbstractController
         //eturn new Response('Check out this great product: '.$product1);
 
         return $this->render('score_rank/index.html.twig', [
+            'mathTopics' => $mathTopics,
             'product1' => $product1,
             'scores' => $scores,
         ]);
     }
 }
+
+
+
+
