@@ -14,7 +14,12 @@
 
 <div id="app">
     <div class="form1">
+    
         <form id="topicForm">
+        <div class="logout">
+            <a href="{{ path('app_logout') }}" class="logoutButton">WYLOGUJ</a>
+        </div>
+        
             <h1 class="h3 mb-3 font-weight-normal">
                 <a href="{{ path('app_main') }}" class="homePage">
                     <img src="{{ asset('images/logo (1) — kopia.png') }}" class="logoLogin"/>
@@ -26,29 +31,36 @@
 
             <div class="title">
                 Witaj,
+                <div class="topicCharts">
                 {% for product in products %}
-                    <div>
+                    
                         <input type="radio" name="topic" value="{{ product.topicName }}">
-                        <label>{{ product.topicName }}</label>
-                    </div>
+                        <label class="topicName">{{ product.topicName }}</label>
+                    
                 {% endfor %}
+                </div>
                 <img src="{{ asset(imagePath) }}" alt="" class="userImage">
             </div>
 
             <div class="boxes">
                 <div class="quizzesLink">
-                    <a href="#" onclick="submitFormWithImage('fastQuizz')">
+                    <a href="#" onclick="submitFormWithImage('fastQuizz')" class="links">
                         <img src="{{ asset('images/fastQuizz.png') }}" class="imageLink">
                         <div class="titleLink">Szybki strzał</div>
                     </a>
                 </div>
                 <div class="quizzesLink">
-                    <a href="#" onclick="submitFormWithImage('40Questions')">
+                    <a href="#" onclick="submitFormWithImage('40Questions')" class="links">
                         <img src="{{ asset('images/40Questions.png') }}" class="imageLink">
                         <div class="titleLink">40 pytań</div>
                     </a>
                 </div>
-
+                <div class="quizzesLink">
+                    <a href="http://localhost:8000/score/rank/1" onclick="submitFormWithImage('rankTable')" class="links">
+                        <img src="{{ asset('images/rankTable.png') }}" class="imageLink">
+                        <div class="titleLink">Ranking</div>
+                    </a>
+                </div>
             </div>
 
             <!-- Hidden input to store the selected image -->

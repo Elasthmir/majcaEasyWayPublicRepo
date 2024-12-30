@@ -1,0 +1,86 @@
+body{
+    background-image: none;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu{
+    display: none;
+}
+.rankPerson{
+    display: flex;
+    width: 1000px;
+    justify-content:space-between;
+
+    margin: 20px;
+
+
+    align-items: center;
+
+    height: 52px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    //padding: 50px 35px;
+}
+
+.id{
+    width: 30px;
+    padding-left: 40px;
+    font-size: 32px;
+    color: #42b983;
+    font-weight: 700;
+}
+
+.name{
+    width:200px;
+    font-size: 32px;
+    color: #42b983;
+    font-weight: 700;
+}
+
+.score{
+    width: 100px;
+    font-size: 32px;
+}
+.shape {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    border-radius: 50%;
+  }
+  .shapeBlue-1 {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    border-radius: 50%;
+
+  }
+
+
+
+
+
+    @for $i from 0  through 3 {
+    .shape:nth-child(#{$i}) {
+        background: #00d092;
+        left: 100px;
+        top: (330px*$i)-230px;
+      }
+
+    }
+    @for $k from 0 through 3 {
+        .shapeBlue-#{$k} {
+            height: 200px;
+            width: 200px;
+            position: fixed;
+            border-radius: 50%;
+          background: #1423aa;
+          right: 100px;
+          top: (330px * $k) - 350px;
+        }
+      }

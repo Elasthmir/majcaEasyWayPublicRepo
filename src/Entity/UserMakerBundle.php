@@ -19,45 +19,35 @@ class UserMakerBundle implements UserInterface, PasswordAuthenticatedUserInterfa
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\Column(length: 180)]
     private ?string $email = null;
-
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
     private array $roles = [];
-
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
-
     #[ORM\Column]
     private bool $isVerified = false;
-
     #[ORM\Column(length: 20)]
     private ?string $nickName = "null";
-
     #[ORM\Column(length: 20)]
     private ?string $firstName = "test";
-
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $imageName = null;
-
     /**
      * @var Collection<int, Score>
      */
     #[ORM\OneToMany(targetEntity: Score::class, mappedBy: 'user_id')]
     private Collection $scores;
-
     public function __construct()
     {
         $this->scores = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;

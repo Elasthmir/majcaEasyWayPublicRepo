@@ -12,22 +12,16 @@ class LinearFunction
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $question = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $answear = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $answer_bad_1 = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $answer_bad_2 = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $answer_bad_3 = null;
-
     public function getId(): ?int
     {
         return $this->id;

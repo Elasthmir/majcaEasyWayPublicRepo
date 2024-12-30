@@ -14,8 +14,6 @@ export default {
         { id: 4, text: 'CONTACT US' }
 
     ]
-
-      
     }
   }
 }
@@ -44,8 +42,20 @@ export default {
     </div>
   </div>
 </template>
+
+
 <style>
+        
+  @media screen and (max-width: 500px) {
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+}
 
 
 </style>
+
+
 

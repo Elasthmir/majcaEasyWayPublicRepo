@@ -1,5 +1,5 @@
 <template>
-  <button id="show-modal" @click="showModal = true">Show Modal</button>
+  <button id="show-modal" @click="showModal = true">Avatary</button>
   <Modal_1 :show="showModal" @childToParent="updateFavorite" @close="showModal = false">
     <template #header>
       <h3>Custom Header</h3>
@@ -12,7 +12,6 @@
 
 <script>
 import Modal_1 from './Modal_1.vue';
-
 export default {
   name: "Modal",
   components: {

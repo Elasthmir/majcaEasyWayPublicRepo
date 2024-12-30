@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Service\TopicHandlerInterface;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Doctrine\ORM\EntityManagerInterface;
-
 class QuizzController extends AbstractController
 {
     private iterable $handlers;

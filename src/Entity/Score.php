@@ -7,28 +7,22 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ScoreRepository::class)]
-class Score
-{
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\ManyToOne(inversedBy: 'scores')]
-    private ?UserMakerBundle $user_id = null;
-
-    #[ORM\Column]
-    private ?int $score = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $topic = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createdAt = null;
-
-    #[ORM\ManyToOne(inversedBy: 'scores')]
-    private ?MathTopics $topic_id = null;
-
+    class Score
+    {
+        #[ORM\Id]
+        #[ORM\GeneratedValue]
+        #[ORM\Column]
+        private ?int $id = null;
+        #[ORM\ManyToOne(inversedBy: 'scores')]
+        private ?UserMakerBundle $user_id = null;
+        #[ORM\Column]
+        private ?int $score = null;
+        #[ORM\Column(length: 255)]
+        private ?string $topic = null;
+        #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+        private ?\DateTimeInterface $createdAt = null;
+        #[ORM\ManyToOne(inversedBy: 'scores')]
+        private ?MathTopics $topic_id = null;
     public function getId(): ?int
     {
         return $this->id;

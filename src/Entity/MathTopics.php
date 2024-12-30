@@ -14,16 +14,13 @@ class MathTopics
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $topicName = null;
-
     /**
      * @var Collection<int, Score>
      */
     #[ORM\OneToMany(targetEntity: Score::class, mappedBy: 'topic_id')]
     private Collection $scores;
-
     public function __construct()
     {
         $this->scores = new ArrayCollection();
