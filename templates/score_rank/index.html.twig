@@ -6,44 +6,103 @@
             <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
             <link rel="stylesheet" href="{{ asset('styles/_scoreRank.scss') }}">
             {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}
 {% block body %}
 
+ {% for topic in mathTopics %}
+ {% set id = id + 1 %} 
+                  
     <div class="content">
-        <div class="rankTable">
+       
         
                     <div class="shape"></div>
-                    <div class="shape"></div>
+                    <div class="shape">aa</div>
                     <div class="shape"></div>
 
                     <div class="shapeBlue-1"></div>
-                    <div class="shapeBlue-2"></div>
+                    <div class="shapeBlue-2">
+                        <div class="circle-container">
+                        <div class="shapeBlue"></div>
+                        <svg class="rotating-text" width="220" height="220">
+                            <defs>
+                            <path
+                                id="circlePath"
+                                d="M 110, 110
+                                m -100, 0
+                                a 100,100 0 1,1 200,0
+                                a 100,100 0 1,1 -200,0"
+                            />
+                            </defs>
+                            <text fill="red" font-size="32" font-family="Arial">
+                            <textPath href="#circlePath" text-anchor="middle" startOffset="50%" >
+                                <a href="http://localhost:8000/score/rank/{{id}}">{{topic.topicName}}</a>
+                            </textPath>
+                            </text>
+                        </svg>
+                        </div>
+                    </div>
                     <div class="shapeBlue-3"></div>
+            <div>
+            
+        {% endfor %} 
             {% set counter = 1 %}
+            <div class = 'rankTable'>
                 {% for category in product1 %}
                 
+                
+                    <!--{% if counter is divisible by(2) %}{{counter}}{% endif %}-->   
+                    <div class="rankPerson">
+                        
 
-                <!--{% if counter is divisible by(2) %}{{counter}}{% endif %}-->   
-                <div class="rankPerson">
-                    
-                   <span class="id"> {{ counter }}</span>
-                   <span class="name"> {{ category.nickName }}</span>
-                   <span class="topic"> {{ category.topic }}</span>
-                   <span class="score"> {{ category.score }}</span><br/>
-                   {% set counter = counter + 1 %}
-                </div>
+                    <span class="id"> {{ counter }}</span>
+                    <span class="name"> {{ category.nickName }}</span>
+                    <span class="topic"> {{ category.topic }}</span>
+                    <span class="score"> {{ category.score }}</span><br/>
+                    {% set counter = counter + 1 %}
+                    </div>
+                
+
                 
                 {% endfor %}
+                </div>
 
 
                 
-        </div>
+        
          
     </div>
     <a href="http://localhost:8000/user#">powrót</a>
-        {% for topic in mathTopics %}
-            <div>
-                <a href="http://localhost:8000/score/rank/{{topic.id}}">{{topic.topicName}}</a>                
-            </div>
-        {% endfor %} 
+       
+
+
+    <script>
+const scrollContainer = document.querySelector('.rankTable');
+const listItems = document.querySelectorAll('.rankPerson');
+
+scrollContainer.addEventListener('scroll', () => {
+  let sizeFactor = 1; // Starting size for the first visible element
+  const sizeDecrement = 0.2; // How much smaller each subsequent item gets
+
+  listItems.forEach((item, index) => {
+    const rect = item.getBoundingClientRect();
+    const containerRect = scrollContainer.getBoundingClientRect();
+
+    if (rect.bottom > containerRect.top && rect.top < containerRect.bottom) {
+      // Element is visible in the container
+      item.style.transform = `scale(${sizeFactor})`;
+      item.style.fontSize = `${16 + (sizeFactor - 1) * 10}px`; // Adjust font size
+      sizeFactor = Math.max(1, sizeFactor - sizeDecrement); // Gradually decrease size factor
+    } else {
+      // Element not visible, reset to default
+      item.style.transform = `scale(.0001)`;
+      item.style.fontSize = `16px`;
+    }
+  });
+});
+
+
+</script>
 {% endblock %}

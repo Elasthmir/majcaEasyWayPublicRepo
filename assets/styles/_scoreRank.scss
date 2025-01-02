@@ -15,7 +15,7 @@ body{
     justify-content:space-between;
 
     margin: 20px;
-
+    transition: transform 0.3s ease, font-size 0.3s ease;
 
     align-items: center;
 
@@ -26,6 +26,17 @@ body{
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
     //padding: 50px 35px;
+    
+}
+.rankTable{
+  overflow:auto;
+  height: 600px;
+  position: relative;
+  top: 200px;
+  white-space: nowrap;    
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; 
 }
 
 .id{
@@ -54,16 +65,54 @@ body{
     border-radius: 50%;
   }
   .shapeBlue-1 {
-    height: 200px;
-    width: 200px;
+    height: 200px; /* Circle height */
+    width: 200px;  /* Circle width */
+    border-radius: 50%; /* Makes it a circle */
+    background: #6741e2; /* Purple color */
     position: fixed;
-    border-radius: 50%;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
-
-
-
-
+  
+  .circle-container {
+    height: 220px; /* Circle height */
+    width: 220px;  /* Circle width */
+    border-radius: 50%; /* Makes it a circle */
+    background: #6741e2; /* Purple color */
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  svg {
+    position: absolute;
+  }
+  .rotating-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+  }
+  .textColorCircle{
+    color:white !important;
+  }
+  .circle-container:hover .rotating-text {
+    animation: rotateText 5s linear infinite;
+  }
+  
+  /* Animation keyframes */
+  @keyframes rotateText {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
     @for $i from 0  through 3 {
     .shape:nth-child(#{$i}) {
@@ -73,14 +122,14 @@ body{
       }
 
     }
-    @for $k from 0 through 3 {
-        .shapeBlue-#{$k} {
-            height: 200px;
-            width: 200px;
-            position: fixed;
-            border-radius: 50%;
-          background: #1423aa;
-          right: 100px;
-          top: (330px * $k) - 350px;
+      @for $k from 0 through 3 {
+          .shapeBlue-#{$k} {
+              height: 200px;
+              width: 200px;
+              position: fixed;
+              border-radius: 50%;
+            background: #6741e2;
+            right: 100px;
+            top: (330px * $k) - 350px;
+          }
         }
-      }

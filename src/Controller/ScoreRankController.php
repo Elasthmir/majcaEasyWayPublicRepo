@@ -46,6 +46,7 @@ class ScoreRankController extends AbstractController
             'mathTopics' => $mathTopics,
             'product1' => $product1,
             'scores' => $scores,
+            'id' => $id,
         ]);
     }
 }
