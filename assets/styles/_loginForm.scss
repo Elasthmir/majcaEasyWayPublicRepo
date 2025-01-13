@@ -1,6 +1,9 @@
 
 .form{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     .background{
         width: 430px;
         height: 520px;
@@ -135,13 +138,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 119%;
     height: 100%;
     background: url('data:image/svg+xml;utf8,<svg id="visual" viewBox="0 0 2000 600" width="2000" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="2000" height="600" fill="%23002233"></rect><path d="M0 261L47.7 242.5C95.3 224 190.7 187 285.8 159.2C381 131.3 476 112.7 571.2 124.5C666.3 136.3 761.7 178.7 857 201C952.3 223.3 1047.7 225.7 1143 195.8C1238.3 166 1333.7 104 1428.8 108.2C1524 112.3 1619 182.7 1714.2 204.8C1809.3 227 1904.7 201 1952.3 188L2000 175" fill="none" stroke-linecap="round" stroke-linejoin="miter" stroke="%230066FF" stroke-width="40"></path></svg>') no-repeat center;
     background-size: cover;
-    //transform: rotate(-30deg); /* Rotacja tła */
     transform-origin: center;
-    z-index: -1; /* Umieść za innymi elementami */
+    z-index: 1;
 }
 
 .about::before{
@@ -163,13 +165,12 @@
     position: absolute;
     //top: 1000px;
     left: 0;
-    width: 120%;
-    height: 100%;
+    width: 400%;
+    height: 200%;
     background: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220%200%202000%201000%22 shape-rendering%3D%22geometricPrecision%22 text-rendering%3D%22geometricPrecision%22%3E%3Crect width%3D%222000%22 height%3D%221000%22 transform%3D%22matrix(1.089057%200%200%201.169749-89.057-84.8745)%22 fill%3D%22%23023%22/%3E%3Cpath d%3D%22M0%2C616l47.7%2C8c47.6%2C8%2C143%2C24%2C238.1-2.7c95.2-26.6%2C190.2-96%2C285.4-95.1C666.3%2C527%2C761.7%2C598%2C857%2C631.5s190.7%2C29.5%2C286%2C7.5s190.7-62%2C285.8-102.2c95.2-40.1%2C190.2-80.5%2C285.4-66.6C1809.3%2C484%2C1904.7%2C552%2C1952.3%2C586l47.7%2C34%22 transform%3D%22matrix(-.014651-.839865%207.688595-.134124-4618.481296%201463.037988)%22 fill%3D%22none%22 stroke%3D%22%2306f%22 stroke-width%3D%2240%22 stroke-linecap%3D%22round%22/%3E%3Cpath d%3D%22M0%2C616l47.7%2C8c47.6%2C8%2C143%2C24%2C238.1-2.7c95.2-26.6%2C190.2-96%2C285.4-95.1C666.3%2C527%2C761.7%2C598%2C857%2C631.5s190.7%2C29.5%2C286%2C7.5s190.7-62%2C285.8-102.2c95.2-40.1%2C190.2-80.5%2C285.4-66.6C1809.3%2C484%2C1904.7%2C552%2C1952.3%2C586l47.7%2C34%22 transform%3D%22matrix(-.014651-.839865%207.688595-.134124-2083.562953%202000.083275)%22 fill%3D%22none%22 stroke%3D%22%2306f%22 stroke-width%3D%2240%22 stroke-linecap%3D%22round%22/%3E%3C/svg%3E') no-repeat center/cover;
     background-size: cover;
-    //transform: rotate(-30deg); /* Rotacja tła */
     transform-origin: center;
-    z-index: -1; /* Umieść za innymi elementami */
+    z-index: -1;
 }
 
 

@@ -22,7 +22,7 @@ export default {
             <div class="descText">
               Dołącz do Majca Easy Way i uzyskaj dostęp do quizów matematycznych dostosowanych do Twojego poziomu, rywalizuj w rankingach i spersonalizuj swoje wrażenia. 
             </div>
-            <div class="button">
+            <div class="button displayNone">
               <a href="/login">
                 <input type="button" class="button" value="Przyłącz się"/>
               </a>

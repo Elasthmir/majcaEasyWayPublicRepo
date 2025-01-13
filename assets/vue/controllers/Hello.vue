@@ -7,11 +7,11 @@ export default {
   data(){
     return {
       menuList: [
-        { id: 0, text: 'HOME' },
-        { id: 1, text: 'ABOUT' },
-        { id: 2, text: 'SERVICES' },
-        { id: 3, text: 'CONTACT' },
-        { id: 4, text: 'CONTACT US' }
+        { id: 0, text: 'LOSUJ 1 PYTANIE' },
+        { id: 1, text: 'TEST 40 PYTAŃ' },
+        { id: 2, text: 'RANKINGH' },
+        { id: 3, text: 'ZALOGUJ' },
+        { id: 4, text: 'ZAREJESTRUJ' }
 
     ]
     }
