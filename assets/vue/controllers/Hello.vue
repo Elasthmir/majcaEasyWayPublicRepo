@@ -17,17 +17,18 @@ export default {
     }
   }
 }
-</script>
+</script> 
 
 
 <template>
   <div class="menuList">
-    <a href="/">
+    <a href="/" class="home">
       <img src="../../images/logo (1) — kopia.png" alt="MajcaEasyWayLogo">
     </a>
     <div class="menuLinks">
       <div class="card" v-for="item in menuList" ref="items"  >
         <div class="front">
+          
           <span>
             {{ item.text }} 
           </span>

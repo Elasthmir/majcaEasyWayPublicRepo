@@ -28,15 +28,20 @@ body{
     //padding: 50px 35px;
     
 }
-.rankTable{
-  overflow:auto;
+.rankTable {
+  overflow: auto;
   height: 600px;
   position: relative;
-  top: 200px;
-  white-space: nowrap;    
+
+  /* width: 1550px; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  white-space: nowrap;
+  flex-direction: column;
   overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; 
+  /* overflow-y: hidden; */
+  -webkit-overflow-scrolling: touch;
 }
 
 .id{
@@ -92,7 +97,8 @@ body{
     position: absolute;
   }
   .rotating-text {
-    position: absolute;
+    position: relative;
+    z-index: 10;
     top: 0;
     left: 0;
     
@@ -115,11 +121,15 @@ body{
   }
 
     @for $i from 0  through 3 {
-    .shape:nth-child(#{$i}) {
-        background: #00d092;
-        left: 100px;
-        top: (330px*$i)-230px;
-      }
+      .shapeGreen-#{$i} {
+        height: 200px;
+        width: 200px;
+        position: fixed;
+        border-radius: 50%;
+      background: #6741e2;
+      left: 100px;
+      top: (330px*$i)-230px;
+    }
 
     }
       @for $k from 0 through 3 {
@@ -133,3 +143,46 @@ body{
             top: (330px * $k) - 350px;
           }
         }
+        .contentRank{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .wholeRank{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+        }
+
+        .prevTopic{
+          width: 700px;
+          min-height: 100px;
+          transform: rotate(-90deg);
+          font-size: 64px;
+        }
+        .nextTopic{
+          width: 700px;
+          height: 100%;
+          
+          .nextTopicTtile{
+            color: #6741e2;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            writing-mode: vertical-rl;
+            width: 100%;
+            height: 100%;
+            font-size: 84px;
+            text-decoration: none;
+          }
+          .nextSign{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+

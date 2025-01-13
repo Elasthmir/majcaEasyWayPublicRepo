@@ -145,51 +145,60 @@ export default {
 };
 </script>
 <template>
-  <div>
-    <h1>{{ topic }}</h1>
-    <p>Selected Mode: {{ selectedModeLabel }}</p>
-    <ul v-if="records.length">
-      <li v-for="(record, index) in records" :key="index">
-        <div v-html="recordContent(record)"></div>
-      </li>
-    </ul>
-    <p v-else>No questions available.</p>
-    <h1 v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
-      {{ countDownResponse[countDownResponseTimer].question }}
-    </h1>
-    <h1 v-if="countDownResponseTimer == -1">
-      nie ma
-      <a href="http://localhost:8000/user#">powrót</a>
-    </h1>
-    <div>
-      <div v-if="countDownResponseTimer >= 0">
-        <button
-          v-for="(answer, index) in shuffledAnswers"
-          :key="index"
-          @click="checkAnswer(answer),toggleQuestion(),counting()"
-        >
-          {{ answer }}
-        </button>
+  <div class="logInBackground"></div>
+  <div class="whole">
+    <div class="quizz">  
+      <div class="question">
+        <div class="counterTimer">
+          <div class="timer">
+            <span v-if="countDownResponseTimer == -1"></span>
+            <span v-else>{{ this.countdown }}</span>
+          </div>
+          <div class="counter"> 
+          </div>
+        </div>
+        <div class="questionTopic">
+          <h1>{{ topic }}</h1>
+          <p>Selected Mode: {{ selectedModeLabel }}</p>
+          <h1 class="questionQuest"v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
+            {{ countDownResponse[countDownResponseTimer].question }}
+          </h1>
+          <h1 v-if="countDownResponseTimer == -1">
+            Quiz Zakończony!
+            <p>Twój wynik: {{ totalScore }}</p>
+            <a href="http://localhost:8000/user#">
+              <button class="button1">Powrót</button>
+            </a>
+            <button class="button1" type="submit">Zapisz wynik</button>
+          </h1>
+        </div>
+        <div class="nextButton">
+          <button v-if="countDownResponseTimer >= 0" class="button1" @click="toggleQuestion(),counting()">Pomiń</button>
+        </div>
       </div>
-      <div v-else></div>
-    </div>
-    <button @click="toggleQuestion(),counting()">Toggle</button>
-    <span v-if="countDownResponseTimer == -1"></span>
-    <span v-else>{{ this.countdown }}</span>
-    <span v-if="right == 0"></span>
-    <span v-if="right == 1">Good</span>
-    <span v-if="right == 2">Bad</span>
-    <span >{{ goodAnswersCounter }}/{{ countDownResponse.length }} dobrych odpowiedzi</span>
-    <div v-if="countDownResponseTimer == -1">
-      <h1>Quiz Finished!</h1>
-      <p>Your total score is: {{ totalScore }}</p>
-      <form id="scoreForm" action="/save-score" method="POST">
-        <input type="hidden" name="_csrf_token" :value="csrfToken" />
-        <input type="hidden" name="score" :value="totalScore" />
-        <input type="hidden" name="topic" :value="topic" />
-        <input type="hidden" name="topicId" :value="topicId" />
-        <button type="submit">Submit Score</button>
-      </form>
+          <div v-if="countDownResponseTimer >= 0" class="answers">
+            <button class="answerButton"
+              v-for="(answer, index) in shuffledAnswers"
+              :key="index"
+              @click="checkAnswer(answer),toggleQuestion(),counting()"
+            >
+              {{ answer }}
+            </button>
+          </div>
+          <div v-else></div>
+      
+      
+      <div v-if="countDownResponseTimer == -1">
+        
+       
+        <form id="scoreForm" action="/save-score" method="POST">
+          <input type="hidden" name="_csrf_token" :value="csrfToken" />
+          <input type="hidden" name="score" :value="totalScore" />
+          <input type="hidden" name="topic" :value="topic" />
+          <input type="hidden" name="topicId" :value="topicId" />
+          
+        </form>
+      </div>
     </div>
   </div>
 </template>

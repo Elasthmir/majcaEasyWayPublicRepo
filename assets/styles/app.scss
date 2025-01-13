@@ -1,11 +1,14 @@
 $redBackround:  white;
-$blueBackround: #1f2838;
+$blueBackround: #002233;
 $greenBytton:   #00d092;
 $fontStyle:       "Poppins", sans-serif;
 @import 'mainContent';
 @import 'loginForm';
 @import 'userInterface';
+@import 'quizz';
 @import 'scoreRank';
+@import 'mediaQueries';
+
 @mixin flex-center {
     
     display: flex;
@@ -15,17 +18,14 @@ $fontStyle:       "Poppins", sans-serif;
 }
 
 body{
+    overflow-x:hidden;
     box-sizing: border-box;
     color: white;
     padding: 0;
     margin: 0;
     border: 0;
-    background-color: $blueBackround;
+    background-color: #002233;
     font-family: $fontStyle;
-    background-image: url("../images/backgroundImage_1kopia.png");
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-size: 50vw 95vh;
 }
 
 .menu{
@@ -40,7 +40,7 @@ body{
     img{
         width: 90%;
     }
-    justify-content:inherit;
+    justify-content:inherit;    
     gap: 70px;
 }
  
@@ -82,4 +82,3 @@ body{
     width: 100%;
     height: 100%;
 }
-

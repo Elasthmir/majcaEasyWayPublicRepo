@@ -1,0 +1,133 @@
+@media (0px <= width <= 700px) {
+    .title{
+        text-align: center;
+        width: 95%;
+        font-size: 48px;
+    }
+    .desc{
+        width: 100%;
+    }
+    .descText{
+        text-align: center;
+        width: 90%;
+    }
+    .about::before{
+        display: none;
+    }
+    .aboutContent::before{
+        display: none;
+    }
+    .aboutPart3::before{
+        display: none;
+    }
+    .menuLinks{
+        display: none !important;
+    }
+    .home{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 80% !important;
+        img{
+            width: 30% !important;
+        }
+
+    }
+    .mainContent{
+        flex-direction: column;
+    }
+    .aboutContent{
+        flex-direction: column;
+        
+    }
+    .aboutPanels{
+        margin-top: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .aboutPart2{
+        flex-direction: column;
+
+    }
+    .mainContentImages{
+        width: 70%;
+    }
+    .img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+    }
+    .about{
+        background-position: top 50px left 10px;
+    }
+    .panelsContent{
+        text-align: center;
+    }
+
+
+    //userPanel
+
+    .form1{
+        width: 100%;
+    }
+    .form1 form {
+        width: 100%;
+        height: 100%;
+    }
+    .boxes{
+        margin-top: 50px;
+        flex-direction: column;
+    }
+    .logInBackground{
+        display: none;
+    }
+
+
+    //QuestionDisplay
+
+    .quizz{
+        width: 100%;
+    }
+
+    .question{
+        width: 80%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .answers {
+        display: grid;
+        margin-top: 30px;
+        grid-template-columns: 1fr 1fr;
+        width: 80%;
+        gap: 30px;
+    }
+    .questionQuest {
+        font-size: 24px;
+    }
+    .answerButton {
+        font-size: 24px;
+        width: 100%;
+        height: 100%;
+    }
+    h1{
+        font-size: 24px;
+    }
+    //rank
+    .contentRank{
+        img{
+            display: none;
+        }
+    }
+    .rankPerson {
+        width: 80%;
+    }
+    .rankTable {
+
+    }
+
+}

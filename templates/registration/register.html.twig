@@ -51,7 +51,10 @@
 
             {{ form_row(registrationForm.imageName, {
                 attr: {
-                    'value': 'Select an article image'
+                    'value': '',         
+                    'id': 'symfony-image-name',
+                    'name': 'registration_form[imageName]',
+                    'class': 'symfony-input'
                 }
             }) }}
 
