@@ -1,22 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Reset your password{% endblock %}
+ {% block stylesheets %}
 
+            <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
+            <link rel="stylesheet" href="{{ asset('styles/loginForm.scss') }}">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 {% block body %}
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <h1>Reset your password</h1>
+
+
+     <div class="form">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form method="post" style = "height:620px;">
+
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+            
+            <h1 class="h3 mb-3 font-weight-normal">
+                <a href="{{ path('app_main') }}"><img src="{{asset('images/logo (1) — kopia.png')}}" class="logoLogin"/></a>
+            </h1>
+            <h3>Resetuj hasło</h3>
+
 
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
         <div>
             <small>
-                Enter your email address, and we will send you a
-                link to reset your password.
+                Wpisz adres e-mail, na ktry zostanie wysłany link do resetu twojego hasła
             </small>
         </div>
 
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+        <button class="btn btn-primary">Reset</button>
+    {{ form_end(requestForm) }}   
+
+            
+        </form>
+    </div>
+   
 {% endblock %}
