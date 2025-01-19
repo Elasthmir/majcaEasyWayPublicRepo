@@ -17,42 +17,16 @@
     <div class="wholeRank">
     {% set nextId = id + 1 %} {# ID dla następnej podstrony #}     
     {% set prevId = id - 1 %} {# ID dla następnej podstrony #}   
-      <div class="prevTopic">
-        lorem
-      </div>
+
       <div class="contentRank">
           <a href="/">
             <img src="{{ asset('images/logo (1) — kopia.png') }}" alt="MajcaEasyWayLogo">
           </a>
           {% if prevId >0 %}
-            <div class="shapeGreen-2">
-              <div class="circle-container">
-                <svg class="rotating-text" width="150" height="150" viewBox="0 0 150 150">
-                  <defs>
-                    <path
-                      id="circlePath"
-                      d=" M 75, 75
-                          m -65, 0
-                          a 65,65 0 1,1 130,0
-                          a 65,65 0 1,1 -130,0"
-                    />
-                  </defs>
-                  <text fill="white" font-size="24" font-family="Arial" dominant-baseline="middle">
-                    <textPath href="#circlePath" startOffset="50%">
-                      <a href="http://localhost:8000/score/rank/{{ prevId }}" style="text-decoration: none; fill: white;">
-                        {{ mathTopics[prevId-1].topicName }}
-                      </a>
-                    </textPath>
-                  </text>
-                </svg>
-                <div class="play-icon">
-                  <div class="triangle"></div>
-                </div>
-              </div>
-            </div>  
+  
           {% endif %}
-       
-            {% if nextId <= mathTopics|length %}
+
+            
 
 
 <style>
@@ -125,8 +99,9 @@
                 </div>
             </div></div>
     
-<div class="nextTopic">
 
+{% if nextId <= mathTopics|length %}
+<div class="nextTopic">
    <div class="nextTopicTtile"><a style="text-decoration:none; color:#6741e2; text-transform:uppercase;"href="http://localhost:8000/score/rank/{{ nextId }}">{{ mathTopics[nextId-1].topicName }}</a>  
     <div class="nextSign"> &#x25BA;</div> 
   </div>
@@ -134,7 +109,14 @@
 </div>
 
 {% endif %}
-<a href="http://localhost:8000/user#">powrót</a>
+    {% if prevId > 0 %}
+      <div class="prevTopic">
+        <div class="prevTopicTtile"><a style="text-decoration:none; color:#6741e2; text-transform:uppercase;"href="http://localhost:8000/score/rank/{{ prevId }}">{{ mathTopics[prevId-1].topicName }}</a>  
+          <div class="prevSign"> &#x25BA;</div> 
+        </div>
+      </div>
+    {% endif %}
+{# <a href="http://localhost:8000/user#">powrót</a> #}
 
     <script>
 const scrollContainer = document.querySelector('.rankTable');

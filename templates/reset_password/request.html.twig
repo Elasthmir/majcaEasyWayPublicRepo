@@ -24,7 +24,7 @@
 
             {% if app.user %}
                 <div class="mb-3">
-                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    Ju jesteś zalogowany jako {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Wyloguj</a>
                 </div>
             {% endif %}
             
@@ -38,7 +38,7 @@
         {{ form_row(requestForm.email) }}
         <div>
             <small>
-                Wpisz adres e-mail, na ktry zostanie wysłany link do resetu twojego hasła
+                Wpisz adres e-mail, na który zostanie wysłany link do resetu twojego hasła
             </small>
         </div>
 

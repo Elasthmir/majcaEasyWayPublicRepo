@@ -147,37 +147,39 @@ svg {
 }
 .wholeRank{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
-}
-
-.prevTopic{
-  width: 700px;
-  min-height: 100px;
-  transform: rotate(-90deg);
-  font-size: 64px;
+  width: 100%;
 }
 
 .nextTopic{
-  width: 700px;
-  height: 100%;     
-  .nextTopicTtile{
-    color: #6741e2;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    writing-mode: vertical-rl;
-    width: 100%;
-    height: 100%;
-    font-size: 84px;
-    text-decoration: none;
-  }
-  .nextSign{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+     height: auto;
+     div {
+         writing-mode:horizontal-tb;
+         height: auto;
+         font-size: 32px;
+     }
+}
+
+.nextTopicTitle {
+ writing-mode:sideways-lr !important;
+}
+.wholeRank  {
+ .prevTopic{
+     height: auto;
+ }
+}
+.wholeRank {
+ .prevTopic {
+     div{
+         writing-mode: horizontal-tb;
+         height: auto;
+         font-size: 32px;
+
+     }
+ }
+
 }
 
 

@@ -13,7 +13,6 @@
             <link rel="stylesheet" href="{{ asset('styles/loginForm.scss') }}">
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-{% block title %}Register{% endblock %}
 
 {% block body %}
 
@@ -43,7 +42,7 @@
                 label: 'Nick'
             }) }}
             
-        <div id="app">
+        {# <div id="app">
             <div class="menu">
             <Modal>
             </Modal>
@@ -56,7 +55,7 @@
                     'name': 'registration_form[imageName]',
                     'class': 'symfony-input'
                 }
-            }) }}
+            }) }} #}
 
                 {{ form_row(registrationForm.plainPassword, {
                     label: 'Hasło'

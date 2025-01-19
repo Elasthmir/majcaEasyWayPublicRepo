@@ -32,14 +32,15 @@ class ScoreRankController extends AbstractController
         ->setParameter('topic', $product)
         ->orderBy('scr.score', 'DESC');
         $scores = $entityManager->getRepository(Score::class)->findBy(['id' => $product]);
-        //dd($scores);
+        
         $product1 = $qb->getQuery()->getResult();
-        if (!$product) {
+        if (!$product1) {
             throw $this->createNotFoundException(
                 'No product found for id '
             );
         } 
-
+        //dd($product1);
+        //dump($product1);
         //eturn new Response('Check out this great product: '.$product1);
 
         return $this->render('score_rank/index.html.twig', [
