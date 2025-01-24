@@ -24,6 +24,7 @@ class QuizzController extends AbstractController
     #[Route('/quizz', name: 'app_quizz')]
     public function index(Request $request)
     {
+        $command = $request->query->get('command');
         $topic = $request->query->get('topic');
         $topicId = $request->query->get('topicId');
         $selectedImage = $request->query->get('selectedImage');
@@ -60,6 +61,7 @@ class QuizzController extends AbstractController
             'topic' => $topic,
             'topicId' => $topicId,
             'selectedImage' => $selectedImage,
+            '$command' => $command,
             'csrf_token' => $csrfToken
         ]);
     }

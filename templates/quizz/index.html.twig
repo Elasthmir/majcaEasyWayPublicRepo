@@ -36,6 +36,7 @@
 {% set answerbad = [] %}
 {% set answerbadfirst = [] %}
 {% set answerbadsecond = [] %}
+{% set command = [] %}
 
 {% for record in records %}
     {% set recordsArray = recordsArray|merge([{
@@ -60,6 +61,10 @@
         'answerBad': record.getAnswerBad3(),
         
     }]) %}
+        {% set command = command|merge([{
+        'answerBad': record.command(),
+        
+    }]) %}
 {% endfor %}
 
 {% set csrf_token = csrf_token('save_score') %}
@@ -73,6 +78,7 @@
                 :answerbadsecond="{{ answerbadsecond|json_encode }}"
                 :topic="{{ topic|json_encode }}"
                 :selected-image="{{ selectedImage|json_encode }}"
+                :command="{{ command|json_encode }}"
                 :csrf-token="{{ csrf_token('save_score')|json_encode}}"
                 :save-score-url="{{ path('save_score')|json_encode }}"
             ></Quizz>

@@ -28,6 +28,9 @@ class LinearAlgebra
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $answer_bad_3 = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $command = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class LinearAlgebra
     public function setAnswerBad3(?string $answer_bad_3): static
     {
         $this->answer_bad_3 = $answer_bad_3;
+
+        return $this;
+    }
+
+    public function getCommand(): ?string
+    {
+        return $this->command;
+    }
+
+    public function setCommand(?string $command): static
+    {
+        $this->command = $command;
 
         return $this;
     }

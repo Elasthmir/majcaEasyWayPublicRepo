@@ -23,7 +23,7 @@ export default {
 <template>
   <div class="menuList">
     <a href="/" class="home">
-      <img src="../../images/logo (1) — kopia 1.png" alt="MajcaEasyWayLogo">
+      <img src="../../images/logo (1) — kopia.png" alt="MajcaEasyWayLogo">
     </a>
     <div class="menuLinks">
       <div class="card">

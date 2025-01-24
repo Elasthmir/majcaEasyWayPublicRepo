@@ -7,6 +7,10 @@ export default {
       type: Array,
       required: true,
     },
+    command: {
+      type: Array,
+      required: true,
+    },
     answer: {
       type: Array,
       required: true,
@@ -43,7 +47,7 @@ export default {
   data() {
     let parameterForQuestionsAmount;
     const appElement = document.getElementById('quiz-app');
-    console.log('App Element:', this.selectedImage); // Add this line
+    console.log('App Element:', this.command); // Add this line
     if (this.selectedImage == "40Questions") {
       parameterForQuestionsAmount = 4
     }
@@ -60,6 +64,7 @@ export default {
       awesome: false,
       right: 0,
       totalScore: 0,
+      command: this.command
     };
   },
   computed: {
@@ -135,7 +140,6 @@ export default {
       return record.question;
     },
     calculateTotalScore() {
-      console.log("nigger " + this.right)
       if (this.right == 1) {
         this.totalScore += 50 * this.countdown;
       }
@@ -166,6 +170,9 @@ export default {
         </div>
         <div class="questionTopic">
           <h1>{{ topic }}</h1>
+          <h5 v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
+            {{ command[countDownResponseTimer].answerBad }}
+          </h5>
           <h1 class="questionQuest"
             v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
             {{ countDownResponse[countDownResponseTimer].question }}
