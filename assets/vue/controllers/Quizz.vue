@@ -49,7 +49,7 @@ export default {
     const appElement = document.getElementById('quiz-app');
     console.log('App Element:', this.command); // Add this line
     if (this.selectedImage == "40Questions") {
-      parameterForQuestionsAmount = 4
+      parameterForQuestionsAmount = 39
     }
     else {
       parameterForQuestionsAmount = 0
@@ -98,10 +98,25 @@ export default {
       }
       console.log(this.countDownResponseTimer);
       this.shuffleAnswersForCurrentQuestion();
+
+      // Dodaj poniższy kod, aby wymusić renderowanie KaTeX
+      this.$nextTick(() => {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true },
+          ],
+          throwOnError: false
+        });
+      });
+
+
     },
     shuffleAnswersForCurrentQuestion() {
 
-
+      console.log(this.countDownResponseTimer)
 
       const answersForCurrentQuestion = [
         this.answer[this.countDownResponseTimer].answer,
@@ -156,12 +171,16 @@ export default {
 };
 </script>
 <template>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+
   <div class="logInBackground"></div>
   <div class="whole">
     <div class="quizz">
       <div class="question">
         <div class="counterTimer">
           <div class="timer">
+
             <span v-if="countDownResponseTimer == -1"></span>
             <span v-else>{{ this.countdown }}</span>
           </div>
@@ -173,10 +192,10 @@ export default {
           <h5 v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
             {{ command[countDownResponseTimer].answerBad }}
           </h5>
-          <h1 class="questionQuest"
+          <h5 class="questionQuest"
             v-if="countDownResponseTimer >= 0 && countDownResponseTimer < countDownResponse.length">
-            {{ countDownResponse[countDownResponseTimer].question }}
-          </h1>
+            \({{ countDownResponse[countDownResponseTimer].question }}\)
+          </h5>
           <h1 v-if="countDownResponseTimer == -1">
             Quiz Zakończony!
             <p>Twój wynik: {{ totalScore }}</p>
@@ -193,6 +212,7 @@ export default {
             </form>
           </h1>
         </div>
+
         <div class="nextButton">
           <button v-if="countDownResponseTimer >= 0" class="button1"
             @click="toggleQuestion(), counting()">Pomiń</button>
@@ -201,12 +221,10 @@ export default {
       <div v-if="countDownResponseTimer >= 0" class="answers">
         <button class="answerButton" v-for="(answer, index) in shuffledAnswers" :key="index"
           @click="checkAnswer(answer), toggleQuestion(), counting()">
-          {{ answer }}
+          <p>$${{ answer }}$$</p>
         </button>
       </div>
       <div v-else></div>
-
-
       <div v-if="countDownResponseTimer == -1">
 
 
@@ -214,4 +232,5 @@ export default {
       </div>
     </div>
   </div>
+
 </template>

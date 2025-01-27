@@ -19,6 +19,7 @@ class QuizzController extends AbstractController
     public function __construct(iterable $handlers)
     {
         $this->handlers = $handlers;
+        //dd($handlers);
     }
     
     #[Route('/quizz', name: 'app_quizz')]
@@ -28,7 +29,7 @@ class QuizzController extends AbstractController
         $topic = $request->query->get('topic');
         $topicId = $request->query->get('topicId');
         $selectedImage = $request->query->get('selectedImage');
-        //dd($topicId);
+        
         //if (!$topic || !$selectedImage) {
             // Jeśli brakuje danych, przekieruj z powrotem na stronę główną
           //  return $this->redirectToRoute('app_home');
@@ -47,14 +48,16 @@ class QuizzController extends AbstractController
         $records = [];
 
         foreach ($this->handlers as $handler) {
+            //dd($topic);
             if ($handler->supports($topic)) {
                 $records = $handler->handle($limit);
+                
                 //dd($records);
                 break;
             }
         }
         $csrfToken = $this->container->get('security.csrf.token_manager')->getToken('save_score');
-        //dd($csrfToken, $topic);
+        
 
         return $this->render('quizz/index.html.twig', [
             'records' => $records,

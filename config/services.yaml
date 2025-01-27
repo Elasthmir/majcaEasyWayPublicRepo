@@ -26,6 +26,21 @@ services:
     App\Service\LinearFunctionHandler:
         tags: ['app.topic_handler']
 
+    App\Service\LiczbyRzeczywisteHandler:
+        tags: ['app.topic_handler']
+        
+    App\Service\WyrazeniaAlgebraiczneHandler:
+        tags: ['app.topic_handler']
+            
+    App\Service\NierownosciHandler:
+        tags: ['app.topic_handler']
+
+    App\Service\FunkcjeHandler:
+        tags: ['app.topic_handler']
+    
+    App\Service\CiagiHandler:
+        tags: ['app.topic_handler']
+
     # Configure the QuizzController to inject the tagged services
     App\Controller\QuizzController:
         arguments:

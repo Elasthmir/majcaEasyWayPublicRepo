@@ -4,33 +4,16 @@
 
 
 {% block body %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
-{{ encore_entry_link_tags('app') }}
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false},
-                {left: '\\[', right: '\\]', display: true}
-            ],
-            throwOnError: false
-        });
-    });
-</script>
+
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('styles/app.scss') }}">
             <link rel="stylesheet" href="{{ asset('styles/mainContent.scss') }}">
             <link rel="stylesheet" href="{{ asset('styles/_scoreRank.scss') }}">
            
 {% endblock %}
- <!--<p>\(\frac{3}{5}\) - \(\frac{2x + 12}{3}\) \(\geq\) \(\frac{x}{6}\)</p>
- <p>\(\frac{x+3}{2}\) = 2 - \(\frac{x-2}{4}\)</p>
 
- (x+3)/2 = 2 - (x-2)/4-->
+
+
 {% set recordsArray = [] %}
 {% set recordsArrayAnswer = [] %}
 {% set answerbad = [] %}
@@ -69,7 +52,6 @@
 
 {% set csrf_token = csrf_token('save_score') %}
        <div id="quiz-app">
-       
             <Quizz
                 :records='{{ recordsArray|json_encode }}'
                 :answer='{{ recordsArrayAnswer|json_encode}}'
@@ -84,4 +66,20 @@
             ></Quizz>
     </div>
 </div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+{{ encore_entry_link_tags('app') }}
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
 {% endblock %}

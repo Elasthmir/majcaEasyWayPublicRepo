@@ -38,9 +38,11 @@
                 Witaj,
                 <div class="topicCharts">
                 {% for product in products %}
-                    
+                    {% if product.topicName != "Algebra (równania i nierówności liniowe)" and product.topicName !="Funkcja Liniowa" and product.topicName !="Ciągi"%}
                         <input type="radio" name="topic" value="{{ product.topicName }}">
                         <label class="topicName">{{ product.topicName }}</label>
+                    {% endif %}
+
                     
                 {% endfor %}
                 </div>
