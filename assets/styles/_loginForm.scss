@@ -147,6 +147,7 @@
 }
 
 .about::before{
+    display: none;
     content: "";
     position: absolute;
     //top: 1000px;
